@@ -122,7 +122,7 @@ def forecast_lstm(model, batch_size, X):
 
 
 # 加载数据
-series = read_csv('data.csv', encoding='gbk', header=0, parse_dates=[0], index_col=0, squeeze=True,
+series = read_csv('LSTM_Single/data.csv', encoding='gbk', header=0, parse_dates=[0], index_col=0, squeeze=True,
                   date_parser=parser)
 # 最后N条数据作为测试数据
 testNum = 864
