@@ -7,8 +7,10 @@ import streamlit as st
 
 # 加载数据
 def parser(x):
-	return datetime.strptime(x, '%Y%m%d%H%M')
-series = read_csv('data.csv',encoding='gbk', header=0, parse_dates=[0], index_col=0, squeeze=True, date_parser=parser)
+    return datetime.strptime(x, '%Y%m%d%H%M')
+
+
+series = read_csv('data.csv', encoding='gbk', header=0, parse_dates=[0], index_col=0, squeeze=True, date_parser=parser)
 # 显示开头部分行
 print(series.head())
 
