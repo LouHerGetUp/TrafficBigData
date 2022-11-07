@@ -14,6 +14,7 @@ import numpy as np
 from pylab import mpl
 import streamlit as st
 import numpy
+import pandas as pd
 
 mpl.rcParams['font.sans-serif'] = ['Microsoft YaHei']  # 指定默认字体：解决plot不能显示中文问题
 mpl.rcParams['axes.unicode_minus'] = False  # 解决保存图像是负号'-'显示为方块的问题
@@ -143,7 +144,7 @@ scaler, train_scaled, test_scaled = scale(train, test)
 print(test_scaled)
 
 # 构建一个LSTM网络模型，并训练，样本数：1，循环训练次数：3000，LSTM层神经元个数为4
-lstm_model = fit_lstm(train_scaled, 1, 10, 8)
+lstm_model = fit_lstm(train_scaled, 1, 2, 8)
 # 重构输入数据的形状，
 print(train_scaled)
 train_reshaped = train_scaled[:, 0].reshape(len(train_scaled), 1, 1)
@@ -184,9 +185,13 @@ st.write("""
 # 交通大数据课程大作业
 LSTM预测结果
 """)
-st.line_chart(raw_values[-testNum:])
-st.line_chart(predictions)
 
+df1 = pd.DataFrame(raw_values[-testNum:],columns=["测试集速度"])
+df2 = pd.DataFrame(predictions,columns=["预测速度"])
+
+chart_data = pd.concat([df1, df2], axis=1)
+
+st.line_chart(chart_data)
 # predictions2 = list()
 # # 加载数据
 # series = read_csv('pre.csv',encoding='gbk', header=0, parse_dates=[0], index_col=0, squeeze=True, date_parser=parser)
