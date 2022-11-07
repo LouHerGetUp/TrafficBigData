@@ -12,6 +12,7 @@ from math import sqrt
 from matplotlib import pyplot
 import numpy as np
 from pylab import mpl
+import streamlit as st
 import numpy
 mpl.rcParams['font.sans-serif'] = ['Microsoft YaHei'] # 指定默认字体：解决plot不能显示中文问题
 mpl.rcParams['axes.unicode_minus'] = False # 解决保存图像是负号'-'显示为方块的问题
@@ -172,6 +173,12 @@ pyplot.plot(predictions)
 pyplot.legend(['测试集速度', '预测速度'], loc="lower right")
 pyplot.show()
 
+st.write("""
+# 交通大数据课程大作业
+LSTM预测结果
+""")
+st.line_chart(raw_values[-testNum:])
+st.line_chart(predictions)
 
 
 
