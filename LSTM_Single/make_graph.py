@@ -10,7 +10,7 @@ def parser(x):
     return datetime.strptime(x, '%Y%m%d%H%M')
 
 
-series = read_csv('data.csv', encoding='gbk', header=0, parse_dates=[0], index_col=0, squeeze=True, date_parser=parser)
+series = read_csv('LSTM_Single/data.csv', encoding='gbk', header=0, parse_dates=[0], index_col=0, squeeze=True, date_parser=parser)
 # 显示开头部分行
 print(series.head())
 
